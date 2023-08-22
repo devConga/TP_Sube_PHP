@@ -2,8 +2,8 @@
 namespace TrabajoSube;
 
 class Tarjeta{
-    $saldo;
-    $limite;
+    public $saldo;
+    public $limite;
     
     function __construct(){
         $this->saldo = 0;
@@ -22,10 +22,9 @@ class Tarjeta{
 }
 
 class Boleto{
-    $hora;
-    $costoBoleto;
-    $saldoRestante;
-    date_default_timezone_set('UTC-3');
+    public $hora;
+    public $costoBoleto;
+    public $saldoRestante;
 
     function __construct($costoBoleto='Undefined', $saldoRestante='Undefined'){
         $this->hora = date('h:i:s');
@@ -34,14 +33,14 @@ class Boleto{
     }
 
     function observar(){
-        echo ('Hora: ' . $this->hora . '\nCosto del Boleto: ' . $this->costoBoleto . '\nSaldo Restante: ' . $this->saldoRestante);
+        echo ('Hora: ' . $this->hora . "\nCosto del Boleto: " . $this->costoBoleto . "\nSaldo Restante: " . $this->saldoRestante);
     }
 }
 
 
 class Colectivo{
 
-    $boletoNormal;
+    public $boletoNormal;
 
     function __construct(){
         $this->boletoNormal = 120;
