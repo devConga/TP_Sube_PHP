@@ -22,7 +22,19 @@ class Tarjeta{
 }
 
 class Boleto{
-    
+    $hora;
+    $costoBoleto;
+    $saldoRestante;
+
+    function __construct($hora='Undefined', $costoBoleto='Undefined', $saldoRestante='Undefined'){
+        $this->hora = $hora;
+        $this->costoBoleto = $costoBoleto;
+        $this->saldoRestante = $saldoRestante;
+    }
+
+    function observar(){
+        echo ('Hora: ' . $this->hora . '\nCosto del Boleto: ' . $this->costoBoleto . '\nSaldo Restante: ' . $this->saldoRestante);
+    }
 }
 
 
@@ -40,6 +52,9 @@ class Colectivo{
         }
         else{
             $tarjeta->saldo = $tarjeta->saldo - $this->boletoNormal;
+
+            $boleto = new Boleto();
         }
     }
+    
 }
