@@ -12,13 +12,28 @@ class Tarjeta{
 
     function cargar($monto){
         if($this->saldo + $monto <= $this->limite){
-            $this->saldo = $this->saldo + $monto;
+            if($monto >= 150){
+                if($monto <= 500 && (($monto % 50) == 0)){
+                    $this->saldo = $this->saldo + $monto;
+                }
+                elseif($monto <= 1500 && (($monto % 100) == 0)){
+                        $this->saldo = $this->saldo + $monto;
+                    }
+                elseif($monto <= 4000 && (($monto % 500 == 0))){
+                    $this->saldo = $this->saldo + $monto;
+                }
+                else{
+                    echo "El monto de la carga no es valido.";
+                }
+            }
+            else{
+                echo "El monto de la carga no es valido.";
+            }
         }
         else{
             echo "La carga excede el limite";
         }
     }
-
 }
 
 class Boleto{
