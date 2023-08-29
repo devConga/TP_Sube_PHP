@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class TarjetaTest extends TestCase{
    
-    $tarjeta = new Tarjeta;
+    $tarjeta = new Tarjeta();
 
     $this->assertTrue($tarjeta->cargar(250));
     $this->assertTrue($tarjeta->cargar(600));
