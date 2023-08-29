@@ -10,7 +10,7 @@ class BoletoTest extends TestCase{
     $colectivo = new Colectivo();
     $tarjeta = new Tarjeta();
     $tarjeta->cargar(300);
-    $this->assertInstanceOf(Boleto, $colectivo->pagarCon($tarjeta));
+    $this->assertInstanceOf(Boleto::class, $colectivo->pagarCon($tarjeta));
 }
 
 }
