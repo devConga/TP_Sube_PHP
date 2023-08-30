@@ -1,6 +1,6 @@
 <?php
 namespace TrabajoSube;
-include 'Tarjeta.php';
+include_once 'Tarjeta.php';
 
 class TFranquiciaParcial extends Tarjeta{
     public $porcentajeDescuento;
