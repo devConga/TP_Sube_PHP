@@ -7,6 +7,6 @@ class TFranquiciaCompleta extends Tarjeta{
 
     function __construct(){
         parent::__construct();
-        $this->porcentajeDescuento = 50;
+        $this->porcentajeDescuento = 100;
     }
 }

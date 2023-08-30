@@ -1,5 +1,24 @@
 <?php
 namespace TrabajoSube;
+include 'Tarjeta.php';
+
+class TFranquiciaParcial extends Tarjeta{
+    public $porcentajeDescuento;
+
+    function __construct(){
+        /* parent::__construct(); */
+        $this->saldo = 0;
+        $this->limite = 6600; 
+        $this->porcentajeDescuento = 50;
+    }
+}
+
+
+
+//No quiero hablar de lo que esta aca abajo
+
+
+/* namespace TrabajoSube;
 
 class TFranquiciaParcial{
     public $saldo;
@@ -43,4 +62,4 @@ class TFranquiciaParcial{
             return FALSE;
         }
     }
-}
+} */
