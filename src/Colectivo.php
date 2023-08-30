@@ -20,7 +20,7 @@ class Colectivo{
             return FALSE;
         }
         else{
-            $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento));
+            $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * (100-$tarjeta->porcentajeDescuento)/100);
 
             $boleto = new Boleto($this->boletoNormal, $tarjeta->saldo);
             return $boleto;
