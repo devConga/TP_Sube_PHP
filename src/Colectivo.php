@@ -10,17 +10,17 @@ class Colectivo{
         $this->boletoNormal = 120;
     }
 
-    function descuento2multiplicador($descuento = 0){
+   /*  function descuento2multiplicador($descuento = 0){
         return (100-$descuento)/100;
-    }
+    } */
 
     function pagarCon($tarjeta){
-        if($tarjeta->saldo < ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento))){
+        if($tarjeta->saldo < ($this->boletoNormal * (100-$tarjeta->porcentajeDescuento)/100)){
             echo 'Saldo insuficiente';
             return FALSE;
         }
         else{
-            $tarjeta->saldo = $tarjeta->saldo - $this->boletoNormal;
+            $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento));
 
             $boleto = new Boleto($this->boletoNormal, $tarjeta->saldo);
             return $boleto;

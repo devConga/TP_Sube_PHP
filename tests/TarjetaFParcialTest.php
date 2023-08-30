@@ -10,7 +10,7 @@ class TarjetaFParcialTest extends TestCase{
     
         $tarjeta = new TarjetaFranquiciaParcial();
         $colectivo = new Colectivo();
-        $this->assertEquals($colectivo->boletoNormal * $colectivo->descuento2multiplicador($tarjeta->porcentajeDescuento), $colectivo->boletoNormal/2);
+        $this->assertEquals(($colectivo->boletoNormal * (100-$tarjeta->porcentajeDescuento)/100), ($colectivo->boletoNormal / 2));
 
 }
 
