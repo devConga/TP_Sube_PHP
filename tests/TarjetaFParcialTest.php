@@ -4,7 +4,7 @@ namespace TrabajoSube;
 
 use PHPUnit\Framework\TestCase;
 
-class TarjetaFParcialTest extends TestCase{
+class TarjetaFranquiciaParcialTest extends TestCase{
    
     public function FParcialEsMitad(){
     
@@ -12,6 +12,6 @@ class TarjetaFParcialTest extends TestCase{
         $colectivo = new Colectivo();
         $this->assertEquals(($colectivo->boletoNormal * (100-$tarjeta->porcentajeDescuento)/100), ($colectivo->boletoNormal / 2));
 
-}
+    }
 
 }
