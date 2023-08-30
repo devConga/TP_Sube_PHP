@@ -2,7 +2,7 @@
 namespace TrabajoSube;
 include 'Tarjeta.php';
 
-class TarjetaFranquiciaCompleta extends Tarjeta{
+class TFranquiciaCompleta extends Tarjeta{
     public $porcentajeDescuento;
 
     function __construct(){
