@@ -10,8 +10,12 @@ class Colectivo{
         $this->boletoNormal = 120;
     }
 
+    function descuento2multiplicador($descuento = 0){
+        return (100-$descuento)/100;
+    }
+
     function pagarCon($tarjeta){
-        if($tarjeta->saldo < $this->boletoNormal){
+        if($tarjeta->saldo < ($this->boletoNormal * descuento2multiplicador($tarjeta->porcentajeDescuento))){
             echo 'Saldo insuficiente';
             return FALSE;
         }

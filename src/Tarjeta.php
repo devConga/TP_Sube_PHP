@@ -5,6 +5,7 @@ class Tarjeta{
     public $saldo;
     public $limite;
     
+    
     function __construct(){
         $this->saldo = 0;
         $this->limite = 6600; 
