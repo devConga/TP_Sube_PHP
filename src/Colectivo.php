@@ -1,6 +1,6 @@
 <?php
 namespace TrabajoSube;
-include 'Boleto.php';
+include_once 'Boleto.php';
 
 class Colectivo{
 
@@ -10,17 +10,17 @@ class Colectivo{
         $this->boletoNormal = 120;
     }
 
-   /*  function descuento2multiplicador($descuento = 0){
+    function descuento2multiplicador($descuento = 0){
         return (100-$descuento)/100;
-    } */
+    }
 
     function pagarCon($tarjeta){
-        if($tarjeta->saldo < ($this->boletoNormal * (100-$tarjeta->porcentajeDescuento)/100)){
+        if($tarjeta->saldo < ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento))){
             echo 'Saldo insuficiente';
             return FALSE;
         }
         else{
-            $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * (100-$tarjeta->porcentajeDescuento)/100);
+            $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento));
 
             $boleto = new Boleto($this->boletoNormal, $tarjeta->saldo);
             return $boleto;
