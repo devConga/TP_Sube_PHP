@@ -6,9 +6,7 @@ class TFranquiciaParcial extends Tarjeta{
     public $porcentajeDescuento;
 
     function __construct(){
-        /* parent::__construct(); */
-        $this->saldo = 0;
-        $this->limite = 6600; 
+        parent::__construct();
         $this->porcentajeDescuento = 50;
     }
 }
