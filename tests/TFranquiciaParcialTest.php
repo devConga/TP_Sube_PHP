@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class TFranquiciaParcialTest extends TestCase{
 
-    public function FParcialEsMitad(){
+    public function testFParcialEsMitad(){
     
         $tarjeta = new TarjetaFranquiciaParcial();
         $colectivo = new Colectivo();
