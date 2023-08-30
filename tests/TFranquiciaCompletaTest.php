@@ -12,7 +12,7 @@ class TFranquiciaCompletaTest extends TestCase{
         $colectivo = new Colectivo();
         
         $tarjeta->saldo = -211.84;
-        $this->assertTrue($colectivo->pagarCon($tarjeta));
+        $this->assertInstanceOf(Boleto::class, $colectivo->pagarCon($tarjeta));
 
     }
 
