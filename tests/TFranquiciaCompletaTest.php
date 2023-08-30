@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class TFranquiciaCompletaTest extends TestCase{
 
-    public function siemprePuedePagar(){
+    public function testSiemprePuedePagar(){
     
         $tarjeta = new TFranquiciaCompleta();
         $colectivo = new Colectivo();
