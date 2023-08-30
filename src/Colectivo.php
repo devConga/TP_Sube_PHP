@@ -23,7 +23,6 @@ class Colectivo{
             $tarjeta->saldo = $tarjeta->saldo - $this->boletoNormal;
 
             $boleto = new Boleto($this->boletoNormal, $tarjeta->saldo);
-            $boleto->observar();
             return $boleto;
         }
     }
