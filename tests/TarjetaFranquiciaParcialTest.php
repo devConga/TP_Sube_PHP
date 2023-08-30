@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class TarjetaFranquiciaParcialTest extends TestCase{
    
+    /** @test */
     public function FParcialEsMitad(){
     
         $tarjeta = new TarjetaFranquiciaParcial();
