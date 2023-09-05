@@ -5,12 +5,14 @@ class Tarjeta{
     public $saldo;
     public $limite;
     public $limiteInferior;
+    public $porcentajeDescuento;
     
     
     function __construct(){
         $this->saldo = 0;
         $this->limite = 6600; 
         $this->limiteInferior = -211.84;
+        $this->porcentajeDescuento = 0;
     }
 
     function cargar($monto){
