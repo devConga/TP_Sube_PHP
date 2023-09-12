@@ -15,7 +15,7 @@ class Boleto{
         $this->fecha = date('d-m');
         $this->costoBoleto = $costoBoleto;
         $this->saldoRestante = $saldoRestante;
-        $this->$idTarjeta = $idTarjeta;
+        $this->idTarjeta = $idTarjeta;
         $this->tipoTarjeta = $tipoTarjeta;
         $this->linea = $linea;
     }
