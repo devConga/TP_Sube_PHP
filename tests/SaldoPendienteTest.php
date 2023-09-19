@@ -8,7 +8,8 @@ class SaldoPendienteTest extends TestCase{
    
     public function testSaldoPendiente(){
     $tarjeta = new Tarjeta;
-    $tarjeta->cargar(7000);
+    $tarjeta->cargar(3500);
+    $tarjeta->cargar(3500);
     $this->assertEquals(400, $tarjeta->pendiente);
 
 }
