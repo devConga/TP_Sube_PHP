@@ -30,7 +30,6 @@ class Tarjeta{
 
 
     function cargar($monto){
-        if($this->saldo + $monto <= $this->limite){
             if($monto >= 150){
                 if($monto <= 500 && (($monto % 50) == 0)){
                     $this->saldo = $this->saldo + $monto;
@@ -57,9 +56,6 @@ class Tarjeta{
                 return FALSE;
             }
         }
-        else{
-            echo "La carga excede el limite";
-            return FALSE;
-        }
-    }
+        
+    
 }
