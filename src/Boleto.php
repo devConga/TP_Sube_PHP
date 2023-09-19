@@ -9,6 +9,7 @@ class Boleto{
     public $idTarjeta;
     public $tipoTarjeta;
     private $linea;
+    private $canceloPendiente;
 
     function __construct($costoBoleto='Undefined', $saldoRestante='Undefined', $idTarjeta=0, $tipoTarjeta="Undefined", $linea){
         $this->hora = date('h:i:s');
@@ -37,7 +38,11 @@ class Boleto{
     }
 
     function getTipoTarjeta(){
+        return $this->tipoTarjeta;
+    }
 
+    function getLinea(){
+        return $this->linea;
     }
     
 }
