@@ -29,7 +29,28 @@ class Colectivo{
             return FALSE;
         }
         else{
-            $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento));
+            if($tarjeta->tipoTarjeta == "Franquicia Parcial"){
+                if((time() - $tarjeta->ultimoViaje) < 600){
+                    echo 'Espere para viajar nuevamente';
+                    return FALSE;
+                } 
+                else if($tarjeta->viajesRealizados < 4){
+                    $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento));
+                    $tarjeta->ultimoViaje = time();
+                    $tarjeta->viajesRealizados+=1;
+                }
+                else{
+                    $tarjeta->saldo = $tarjeta->saldo - $this->boletoNormal;
+                }
+            }
+            else if($tarjeta->tipoTarjeta == "Franquicia Completa"){
+                if($tarjeta->viajesRealizados >= 2){
+                    $tarjeta->saldo = $tarjeta->saldo - $this->boletoNormal;
+                }
+            }
+            else{
+                $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento));
+            }
             
             if(($tarjeta->pendiente > 0) != $this->hayPendiente){
                 $this->canceloPendiente = TRUE;
