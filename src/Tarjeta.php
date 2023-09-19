@@ -14,7 +14,7 @@ class Tarjeta{
         $this->limite = 6600; 
         $this->limiteInferior = -211.84;
         $this->porcentajeDescuento = 0;
-        $this->pendiente = 10;
+        $this->pendiente = 0;
     }
 
     function AcreditarYCalcularPendiente(){
