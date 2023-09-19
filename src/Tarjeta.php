@@ -30,32 +30,32 @@ class Tarjeta{
 
 
     function cargar($monto){
-            if($monto >= 150){
-                if($monto <= 500 && (($monto % 50) == 0)){
-                    $this->saldo = $this->saldo + $monto;
+        if($monto >= 150){
+            if($monto <= 500 && (($monto % 50) == 0)){
+                $this->saldo = $this->saldo + $monto;
+                $this->AcreditarYCalcularPendiente();
+                return TRUE;
+            }
+            elseif($monto <= 1500 && (($monto % 100) == 0)){
+                $this->saldo = $this->saldo + $monto;
                     $this->AcreditarYCalcularPendiente();
                     return TRUE;
-                }
-                elseif($monto <= 1500 && (($monto % 100) == 0)){
-                        $this->saldo = $this->saldo + $monto;
-                        $this->AcreditarYCalcularPendiente();
-                        return TRUE;
                     }
-                elseif($monto <= 4000 && (($monto % 500 == 0))){
-                    $this->saldo = $this->saldo + $monto;
-                    $this->AcreditarYCalcularPendiente();
-                    return TRUE;
-                }
-                else{
-                    echo "El monto de la carga no es valido.";
-                    return FALSE;
-                }
+            elseif($monto <= 4000 && (($monto % 500 == 0))){
+                $this->saldo = $this->saldo + $monto;
+                $this->AcreditarYCalcularPendiente();
+                return TRUE;
             }
             else{
                 echo "El monto de la carga no es valido.";
                 return FALSE;
             }
         }
+        else{
+            echo "El monto de la carga no es valido.";
+            return FALSE;
+        }
+    }
         
     
 }
