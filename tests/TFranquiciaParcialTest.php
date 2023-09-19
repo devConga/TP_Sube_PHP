@@ -10,7 +10,11 @@ class TFranquiciaParcialTest extends TestCase{
     
         $tarjeta = new TFranquiciaParcial();
         $colectivo = new Colectivo();
-        $this->assertTrue(($colectivo->boletoNormal * $colectivo->descuento2multiplicador($tarjeta->porcentajeDescuento)) == ($colectivo->boletoNormal / 2));
+        $boleto = $colectivo->pagarCon($tarjeta);
+
+        $this->assertTrue(($colectivo->boletoNormal * $colectivo->descuento2multiplicador($tarjeta->porcentajeDescuento)) == (120 / 2));
+        $this->assertEquals("Franquicia Parcial", $tarjeta->tipoTarjeta);
+        $this->assertEquals("Franquicia Parcial", $boleto->tipoTarjeta);
 
     }
 
