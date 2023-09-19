@@ -6,7 +6,7 @@ class Tarjeta{
     public $limite;
     public $limiteInferior;
     public $porcentajeDescuento;
-    public $saldoPendiente;
+    public $pendiente;
     
     
     function __construct(){
