@@ -8,6 +8,8 @@ class Tarjeta{
     public $porcentajeDescuento;
     public $idTarjeta;
     public $tipoTarjeta;
+    public $pendiente;
+    
     
     function __construct(){
         $this->saldo = 0;
@@ -21,27 +23,37 @@ class Tarjeta{
     function str_rand(int $length = 64){
         $length = ($length < 4) ? 4 : $length;
         return bin2hex(random_bytes(($length-($length%2))/2));
+        $this->pendiente = 0;
     }
 
+    function AcreditarYCalcularPendiente(){
+        if($this->saldo < $this->limite){
+            $this->saldo = $this->saldo + $this->pendiente;
+            $this->pendiente = 0;
+        }
+        if($this->saldo > $this->limite){
+            $this->pendiente = $this->pendiente + ($this->saldo - $this->limite);
+            $this->saldo = $this->limite;
+        }
+    }
+
+
     function cargar($monto){
-        if($this->saldo + $monto <= $this->limite){
-            if($monto >= 150){
-                if($monto <= 500 && (($monto % 50) == 0)){
-                    $this->saldo = $this->saldo + $monto;
+        if($monto >= 150){
+            if($monto <= 500 && (($monto % 50) == 0)){
+                $this->saldo = $this->saldo + $monto;
+                $this->AcreditarYCalcularPendiente();
+                return TRUE;
+            }
+            elseif($monto <= 1500 && (($monto % 100) == 0)){
+                $this->saldo = $this->saldo + $monto;
+                    $this->AcreditarYCalcularPendiente();
                     return TRUE;
-                }
-                elseif($monto <= 1500 && (($monto % 100) == 0)){
-                        $this->saldo = $this->saldo + $monto;
-                        return TRUE;
                     }
-                elseif($monto <= 4000 && (($monto % 500 == 0))){
-                    $this->saldo = $this->saldo + $monto;
-                    return TRUE;
-                }
-                else{
-                    echo "El monto de la carga no es valido.";
-                    return FALSE;
-                }
+            elseif($monto <= 4000 && (($monto % 500 == 0))){
+                $this->saldo = $this->saldo + $monto;
+                $this->AcreditarYCalcularPendiente();
+                return TRUE;
             }
             else{
                 echo "El monto de la carga no es valido.";
@@ -49,8 +61,10 @@ class Tarjeta{
             }
         }
         else{
-            echo "La carga excede el limite";
+            echo "El monto de la carga no es valido.";
             return FALSE;
         }
     }
+        
+    
 }
