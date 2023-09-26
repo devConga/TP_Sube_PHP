@@ -11,5 +11,6 @@ class TFranquiciaCompleta extends Tarjeta{
         parent::__construct();
         $this->tipoTarjeta = "Franquicia Completa";
         $this->porcentajeDescuento = 100;
+        $this->viajesRealizados = 0;
     }
 }
