@@ -16,19 +16,19 @@ class BoletoTest extends TestCase{
         $colectivo = new Colectivo("Q", time());
         $tarjeta = new Tarjeta();
         $boleto = $colectivo->pagarCon($tarjeta);
-        $this->assertEquals("Normal", $boleto->getTipoTarjeta);
+        $this->assertEquals("Normal", $boleto->getTipoTarjeta());
     }
     public function testTipoTarjetaParcial(){
         $colectivo = new Colectivo("Q", time());
         $tarjeta = new TFranquiciaParcial();
         $boleto = $colectivo->pagarCon($tarjeta);
-        $this->assertEquals("Franquicia Parcial", $boleto->getTipoTarjeta);
+        $this->assertEquals("Franquicia Parcial", $boleto->getTipoTarjeta());
     }
     public function testTipoTarjetaCompleta(){
         $colectivo = new Colectivo("Q", time());
         $tarjeta = new TFranquiciaCompleta();
         $boleto = $colectivo->pagarCon($tarjeta);
-        $this->assertEquals("Franquicia Completa", $boleto->getTipoTarjeta);
+        $this->assertEquals("Franquicia Completa", $boleto->getTipoTarjeta());
     }
 
 }
