@@ -9,7 +9,7 @@ class TFranquiciaCompletaTest extends TestCase{
     public function testSiemprePuedePagar(){
     
         $tarjeta = new TFranquiciaCompleta();
-        $colectivo = new Colectivo();
+        $colectivo = new Colectivo("Q", time());
         $boleto = $colectivo->pagarCon($tarjeta);
         
         $tarjeta->saldo = -211.84;

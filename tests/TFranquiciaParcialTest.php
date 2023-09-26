@@ -9,7 +9,7 @@ class TFranquiciaParcialTest extends TestCase{
     public function testFParcialEsMitad(){
     
         $tarjeta = new TFranquiciaParcial();
-        $colectivo = new Colectivo();
+        $colectivo = new Colectivo("Q", time());
         $boleto = $colectivo->pagarCon($tarjeta);
 
         $this->assertTrue(($colectivo->boletoNormal * $colectivo->descuento2multiplicador($tarjeta->porcentajeDescuento)) == (120 / 2));
