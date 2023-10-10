@@ -42,7 +42,7 @@ class Colectivo{
                         echo 'Espere para viajar nuevamente';
                         return FALSE;
                     } 
-                    else if($tarjeta->viajesRealizados < 4){
+                    if($tarjeta->viajesRealizados < 4){
                         $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento));
                         $tarjeta->ultimoViajeDia = $this->dia;
                         $tarjeta->ultimoViajeHora = $this->hora;
