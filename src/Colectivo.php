@@ -38,7 +38,7 @@ class Colectivo{
                     if($this->dia != $tarjeta->ultimoViajeDia){
                         $tarjeta->viajesRealizados = 0;
                     }
-                    if(($this->hora - $tarjeta->ultimoViajeHora) < 600){
+                    if(($this->hora - $tarjeta->ultimoViajeHora) < 300){
                         echo 'Espere para viajar nuevamente';
                         return FALSE;
                     } 
