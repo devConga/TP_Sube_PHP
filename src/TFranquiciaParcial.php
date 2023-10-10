@@ -5,8 +5,9 @@ include_once 'Tarjeta.php';
 class TFranquiciaParcial extends Tarjeta{
     public $porcentajeDescuento;
     public $viajesRealizados;
-    public $ultimoViaje;
-
+    public $ultimoViajeDia;
+    public $ultimoViajeHora;
+    
     function __construct(){
         parent::__construct();
         $this->tipoTarjeta = "Franquicia Parcial";

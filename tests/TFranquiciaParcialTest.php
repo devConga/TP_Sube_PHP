@@ -22,7 +22,7 @@ class TFranquiciaParcialTest extends TestCase{
     public function testMarcarCincoMinutos(){
         $tarjeta = new TFranquiciaParcial();
         $tiempo = new Tiempo();
-        $colectivo = new Colectivo("115", $tiempo);
+        $colectivo = new Colectivo("115", $tiempo->segundos, $tiempo->dia);
 
         $tarjeta->cargar(600);
         $boleto = $colectivo->pagarCon($tarjeta);
@@ -35,7 +35,7 @@ class TFranquiciaParcialTest extends TestCase{
     public function testQuintoBoletoDia(){
         $tarjeta = new TFranquiciaParcial();
         $tiempo = new Tiempo();
-        $colectivo = new Colectivo("115", $tiempo);
+        $colectivo = new Colectivo("115", $tiempo->segundos, $tiempo->dia);
         $tarjeta->cargar(600);
 
         $boleto = $colectivo->pagarCon($tarjeta);

@@ -9,11 +9,13 @@ class Colectivo{
     private $hayPendiente;
     private $canceloPendiente;
     private $hora;
+    private $dia;
 
-    function __construct($linea="Q", $hora){
+    function __construct($linea="Q", $hora, $dia){
         $this->boletoNormal = 185;
         $this->linea = $linea;
         $this->hora = $hora;
+        $this->dia = $dia;
     }
 
     function descuento2multiplicador($descuento = 0){
@@ -33,16 +35,17 @@ class Colectivo{
         else{
             switch($tarjeta->tipoTarjeta){
                 case "Franquicia Parcial":
-                    if(floor($this->hora/86400) != floor($tarjeta->ultimoViaje/86400)){
+                    if($this->dia != $tarjeta->ultimoViajeDia){
                         $tarjeta->viajesRealizados = 0;
                     }
-                    if(($this->hora - $tarjeta->ultimoViaje) < 600){
+                    if(($this->hora - $tarjeta->ultimoViajeHora) < 600){
                         echo 'Espere para viajar nuevamente';
                         return FALSE;
                     } 
                     else if($tarjeta->viajesRealizados < 4){
                         $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento));
-                        $tarjeta->ultimoViaje = $this->hora;
+                        $tarjeta->ultimoViajeDia = $this->dia;
+                        $tarjeta->ultimoViajeHora = $this->hora;
                         $tarjeta->viajesRealizados+=1;
                     }
                     else{
@@ -51,7 +54,7 @@ class Colectivo{
                     break;
                 
                 case "Franquicia Completa":
-                    if(floor($this->hora/86400) != floor($tarjeta->ultimoViaje/86400)){
+                    if($this->dia != $tarjeta->ultimoViajeDia){
                         $tarjeta->viajesRealizados = 0;
                     }
                     if($tarjeta->viajesRealizados < 2){
