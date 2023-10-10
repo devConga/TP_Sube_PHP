@@ -38,19 +38,26 @@ class Colectivo{
                     if($this->dia != $tarjeta->ultimoViajeDia){
                         $tarjeta->viajesRealizados = 0;
                     }
+
                     if(($this->hora - $tarjeta->ultimoViajeHora) < 300 && $tarjeta->ultimoViajeHora != 0){
                         echo 'Espere para viajar nuevamente';
                         return FALSE;
                     } 
-                    if($tarjeta->viajesRealizados < 4){
+
+                    else {
+                        if($tarjeta->viajesRealizados < 4){
                         $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento));
                         $tarjeta->ultimoViajeDia = $this->dia;
                         $tarjeta->ultimoViajeHora = $this->hora;
                         $tarjeta->viajesRealizados+=1;
+                        }
+                        else{
+                            $tarjeta->saldo = $tarjeta->saldo - $this->boletoNormal;
+                            $tarjeta->ultimoViajeDia = $this->dia;
+                            $tarjeta->ultimoViajeHora = $this->hora;
+                        }
                     }
-                    else{
-                        $tarjeta->saldo = $tarjeta->saldo - $this->boletoNormal;
-                    }
+                    
                     break;
                 
                 case "Franquicia Completa":
