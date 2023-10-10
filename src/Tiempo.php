@@ -44,6 +44,4 @@ class Tiempo{
 
 }
 
-$tiempo = new Tiempo;
-
 }

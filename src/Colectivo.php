@@ -11,7 +11,7 @@ class Colectivo{
     private $hora;
 
     function __construct($linea="Q", $hora){
-        $this->boletoNormal = 120;
+        $this->boletoNormal = 185;
         $this->linea = $linea;
         $this->hora = $hora;
     }

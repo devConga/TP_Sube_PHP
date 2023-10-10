@@ -10,7 +10,7 @@ class ViajePlusTest extends TestCase{
     $colectivo = new Colectivo("Q", time());
     $tarjeta = new Tarjeta();
     $colectivo->pagarCon($tarjeta);
-    $this->assertEquals(-120, $tarjeta->saldo);
+    $this->assertEquals(-185, $tarjeta->saldo);
 }
 
 }
