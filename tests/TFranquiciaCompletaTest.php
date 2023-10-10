@@ -9,11 +9,9 @@ class TFranquiciaCompletaTest extends TestCase{
     public function testSiemprePuedePagar(){
     
         $tarjeta = new TFranquiciaCompleta();
-        $colectivo = new Colectivo("Q", time());
+        $colectivo = new Colectivo("Q", time(), date('d'));
         $boleto = $colectivo->pagarCon($tarjeta);
         
-        
-        $tarjeta->saldo = -211.84;
         $this->assertInstanceOf(Boleto::class, $boleto);
         $this->assertEquals("Franquicia Completa", $tarjeta->tipoTarjeta);
         $this->assertEquals("Franquicia Completa", $boleto->tipoTarjeta);
