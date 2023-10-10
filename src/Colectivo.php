@@ -46,12 +46,14 @@ class Colectivo{
 
                     else {
                         if($tarjeta->viajesRealizados < 4){
+                        echo 'ALLAAAAAAAAAAAA';
                         $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento));
                         $tarjeta->ultimoViajeDia = $this->dia;
                         $tarjeta->ultimoViajeHora = $this->hora;
                         $tarjeta->viajesRealizados+=1;
                         }
                         else{
+                            echo 'ACAAAAAAAAAAAAAAAAA';
                             $tarjeta->saldo = $tarjeta->saldo - $this->boletoNormal;
                             $tarjeta->ultimoViajeDia = $this->dia;
                             $tarjeta->ultimoViajeHora = $this->hora;
@@ -81,7 +83,7 @@ class Colectivo{
                 $this->canceloPendiente = TRUE;
             }
 
-            $boleto = new Boleto($this->boletoNormal, $tarjeta->saldo, $tarjeta->idTarjeta, $tarjeta->tipoTarjeta, $this->linea, $this->canceloPendiente);
+            $boleto = new Boleto(($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento)), $tarjeta->saldo, $tarjeta->idTarjeta, $tarjeta->tipoTarjeta, $this->linea, $this->canceloPendiente);
             $this->canceloPendiente = FALSE;
             return $boleto;
         }
