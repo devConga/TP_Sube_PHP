@@ -8,8 +8,8 @@ class Colectivo{
     public $linea;
     private $hayPendiente;
     private $canceloPendiente;
-    private $hora;
-    private $dia;
+    public $hora;
+    public $dia;
 
     function __construct($linea="Q", $hora, $dia){
         $this->boletoNormal = 185;
