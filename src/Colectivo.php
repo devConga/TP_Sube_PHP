@@ -46,14 +46,12 @@ class Colectivo{
 
                     else {
                         if($tarjeta->viajesRealizados < 4){
-                        echo 'ALLAAAAAAAAAAAA';
                         $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento));
                         $tarjeta->ultimoViajeDia = $this->dia;
                         $tarjeta->ultimoViajeHora = $this->hora;
                         $tarjeta->viajesRealizados+=1;
                         }
                         else{
-                            echo 'ACAAAAAAAAAAAAAAAAA';
                             $tarjeta->saldo = $tarjeta->saldo - $this->boletoNormal;
                             $tarjeta->ultimoViajeDia = $this->dia;
                             $tarjeta->ultimoViajeHora = $this->hora;

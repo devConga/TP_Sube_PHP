@@ -26,8 +26,8 @@ class TFranquiciaParcialTest extends TestCase{
 
         $tarjeta->cargar(600);
         $boleto = $colectivo->pagarCon($tarjeta);
-        
-        $tiempo->AvanzarSegundos(50);
+
+        echo $tarjeta->viajesRealizados . ' ';
 
         $this->assertFalse($colectivo->pagarCon($tarjeta));
     }
