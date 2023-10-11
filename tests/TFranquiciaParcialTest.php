@@ -25,28 +25,25 @@ class TFranquiciaParcialTest extends TestCase{
         $colectivo = new Colectivo("115", $tiempo->segundos, $tiempo->dia);
 
         $tarjeta->cargar(600);
-        $tiempo->AvanzarSegundos(15); $colectivo->dia = $tiempo->dia; $colectivo->hora = $tiempo->segundos;
+        $tiempo->AvanzarSegundos(15); $colectivo->hora = $tiempo->segundos;
         $boleto = $colectivo->pagarCon($tarjeta);
         $boleto = $colectivo->pagarCon($tarjeta);
-
-        echo $tarjeta->viajesRealizados . ' ';
-        echo $tarjeta->ultimoViajeHora . ' ';
 
         $this->assertFalse($colectivo->pagarCon($tarjeta));
     }
 
-    /*public function testQuintoBoletoDia(){
+    public function testQuintoBoletoDia(){
         $tarjeta = new TFranquiciaParcial();
         $tiempo = new Tiempo();
         $colectivo = new Colectivo("115", $tiempo->segundos, $tiempo->dia);
         $tarjeta->cargar(600);
 
         $boleto = $colectivo->pagarCon($tarjeta);
-        $tiempo->AvanzarSegundos(350);
+        $tiempo->AvanzarSegundos(350); $colectivo->dia = $tiempo->dia; $colectivo->hora = $tiempo->segundos;
         $boleto = $colectivo->pagarCon($tarjeta);
-        $tiempo->AvanzarSegundos(350);
+        $tiempo->AvanzarSegundos(350); $colectivo->dia = $tiempo->dia; $colectivo->hora = $tiempo->segundos;
         $boleto = $colectivo->pagarCon($tarjeta);
-        $tiempo->AvanzarSegundos(350);
+        $tiempo->AvanzarSegundos(350); $colectivo->dia = $tiempo->dia; $colectivo->hora = $tiempo->segundos;
         $boleto = $colectivo->pagarCon($tarjeta);
 
         $saldo = $tarjeta->saldo;
@@ -54,6 +51,6 @@ class TFranquiciaParcialTest extends TestCase{
 
         $this->assertEquals($saldo - 185, $tarjeta->saldo);
 
-    }*/
+    }
 
 }
