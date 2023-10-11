@@ -2,7 +2,7 @@
 namespace TrabajoSube;
 
 class Tarjeta{
-    public $saldo;
+    private $saldo;
     public $limite;
     public $limiteInferior;
     public $porcentajeDescuento;
