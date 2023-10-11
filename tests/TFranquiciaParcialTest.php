@@ -21,11 +21,11 @@ class TFranquiciaParcialTest extends TestCase{
 
     public function testMarcarCincoMinutos(){
         $tarjeta = new TFranquiciaParcial();
-        $tiempo = new Tiempo();
-        $colectivo = new Colectivo("115", $tiempo->segundos, $tiempo->dia);
+        $tiempoFalso = new TiempoFalso();
+        $colectivo = new Colectivo("115", $tiempoFalso);
 
         $tarjeta->cargar(600);
-        $tiempo->AvanzarSegundos(15); $colectivo->hora = $tiempo->segundos;
+        $tiempoFalso->AvanzarSegundos(15);
         $boleto = $colectivo->pagarCon($tarjeta);
         $boleto = $colectivo->pagarCon($tarjeta);
 
@@ -34,16 +34,16 @@ class TFranquiciaParcialTest extends TestCase{
 
     public function testQuintoBoletoDia(){
         $tarjeta = new TFranquiciaParcial();
-        $tiempo = new Tiempo();
-        $colectivo = new Colectivo("115", $tiempo->segundos, $tiempo->dia);
+        $tiempoFalso = new TiempoFalso();
+        $colectivo = new Colectivo("115", $tiempoFalso);
         $tarjeta->cargar(600);
 
         $boleto = $colectivo->pagarCon($tarjeta);
-        $tiempo->AvanzarSegundos(350); $colectivo->dia = $tiempo->dia; $colectivo->hora = $tiempo->segundos;
+        $tiempoFalso->AvanzarSegundos(350);
         $boleto = $colectivo->pagarCon($tarjeta);
-        $tiempo->AvanzarSegundos(350); $colectivo->dia = $tiempo->dia; $colectivo->hora = $tiempo->segundos;
+        $tiempoFalso->AvanzarSegundos(350);
         $boleto = $colectivo->pagarCon($tarjeta);
-        $tiempo->AvanzarSegundos(350); $colectivo->dia = $tiempo->dia; $colectivo->hora = $tiempo->segundos;
+        $tiempoFalso->AvanzarSegundos(350);
         $boleto = $colectivo->pagarCon($tarjeta);
 
         $saldo = $tarjeta->saldo;

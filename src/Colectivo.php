@@ -8,14 +8,12 @@ class Colectivo{
     public $linea;
     private $hayPendiente;
     private $canceloPendiente;
-    protected $hora;
-    protected $dia;
+    public $tiempo;
 
-    function __construct($linea="Q", $hora, $dia){
+    function __construct($linea="Q", TiempoInterface $tiempo){
         $this->boletoNormal = 185;
         $this->linea = $linea;
-        $this->hora = $hora;
-        $this->dia = $dia;
+        $this->tiempo = $tiempo;
     }
 
     function descuento2multiplicador($descuento = 0){
@@ -35,39 +33,42 @@ class Colectivo{
         else{
             switch($tarjeta->tipoTarjeta){
                 case "Franquicia Parcial":
-                    if($this->dia != $tarjeta->ultimoViajeDia){
+                    if($this->tiempo->day() != $tarjeta->ultimoViajeDia){
                         $tarjeta->viajesRealizados = 0;
                     }
 
-                    if((($this->hora - $tarjeta->ultimoViajeHora) < 300 && $tarjeta->ultimoViajeHora != 0) && $tarjeta->viajesRealizados < 4){
+                    if((($this->tiempo->time() - $tarjeta->ultimoViajeHora) < 300 && $tarjeta->ultimoViajeHora != 0) && $tarjeta->viajesRealizados < 4){
                         echo 'Espere para viajar nuevamente';
                         return FALSE;
                     } 
                     else{
                         if($tarjeta->viajesRealizados < 4){
                         $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento));
-                        $tarjeta->ultimoViajeDia = $this->dia;
-                        $tarjeta->ultimoViajeHora = $this->hora;
+                        $tarjeta->ultimoViajeDia = $this->tiempo->day();
+                        $tarjeta->ultimoViajeHora = $this->tiempo->time();
                         $tarjeta->viajesRealizados+=1;
                         }
                         else{
                             $tarjeta->saldo = $tarjeta->saldo - $this->boletoNormal;
-                            $tarjeta->ultimoViajeDia = $this->dia;
-                            $tarjeta->ultimoViajeHora = $this->hora;
+                            $tarjeta->ultimoViajeDia = $this->tiempo->day();
+                            $tarjeta->ultimoViajeHora = $this->tiempo->time();
                         }
                     }
                     
                     break;
                 
                 case "Franquicia Completa":
-                    if($this->dia != $tarjeta->ultimoViajeDia){
+                    if($this->tiempo->day() != $tarjeta->ultimoViajeDia){
                         $tarjeta->viajesRealizados = 0;
                     }
                     if($tarjeta->viajesRealizados < 2){
                         $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento));
+                        $tarjeta->viajesRealizados+=1;
+                        $tarjeta->ultimoViajeDia = $this->tiempo->day();
                     }
                     else{
                         $tarjeta->saldo = $tarjeta->saldo - $this->boletoNormal;
+                        $tarjeta->ultimoViajeDia = $this->tiempo->day();
                     }
                     break;
 
