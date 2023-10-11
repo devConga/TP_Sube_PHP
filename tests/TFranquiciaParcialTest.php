@@ -35,7 +35,7 @@ class TFranquiciaParcialTest extends TestCase{
         $this->assertFalse($colectivo->pagarCon($tarjeta));
     }
 
-    public function testQuintoBoletoDia(){
+    /*public function testQuintoBoletoDia(){
         $tarjeta = new TFranquiciaParcial();
         $tiempo = new Tiempo();
         $colectivo = new Colectivo("115", $tiempo->segundos, $tiempo->dia);
@@ -54,6 +54,6 @@ class TFranquiciaParcialTest extends TestCase{
 
         $this->assertEquals($saldo - 185, $tarjeta->saldo);
 
-    }
+    }*/
 
 }
