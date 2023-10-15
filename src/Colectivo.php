@@ -74,7 +74,7 @@ class Colectivo{
 
             if($tarjeta->pendiente > 0){
                 $this->hayPendiente = TRUE;
-                $tarjeta->AcreditarPendiente();
+                $tarjeta->AcreditarPendienteColectivo();
             }
 
             $boleto = new Boleto(($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento)), $tarjeta->saldo, $tarjeta->idTarjeta, $tarjeta->tipoTarjeta, $this->linea);
