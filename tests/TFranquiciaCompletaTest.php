@@ -19,18 +19,14 @@ class TFranquiciaCompletaTest extends TestCase{
 
     }
 
-    /*public function testTercerBoletoDia(){
+    public function testTercerBoletoDia(){
         $tarjeta = new TFranquiciaCompleta();
         $tiempo = new Tiempo();
-        $colectivo = new Colectivo("115", $tiempo->segundos, $tiempo->dia);
+        $colectivo = new Colectivo("115", $tiempo);
         $tarjeta->cargar(600);
 
         $boleto = $colectivo->pagarCon($tarjeta);
-        $tiempo->AvanzarSegundos(350); $colectivo->dia = $tiempo->dia; $colectivo->hora = $tiempo->segundos;
-        $boleto = $colectivo->pagarCon($tarjeta);
-        $tiempo->AvanzarSegundos(350); $colectivo->dia = $tiempo->dia; $colectivo->hora = $tiempo->segundos;
-        $boleto = $colectivo->pagarCon($tarjeta);
-        $tiempo->AvanzarSegundos(350); $colectivo->dia = $tiempo->dia; $colectivo->hora = $tiempo->segundos;
+        $tiempo->AvanzarSegundos(350);
         $boleto = $colectivo->pagarCon($tarjeta);
 
         $saldo = $tarjeta->saldo;
@@ -39,7 +35,7 @@ class TFranquiciaCompletaTest extends TestCase{
 
         $this->assertEquals($saldo - 185, $tarjeta->saldo);
 
-    }*/
+    }
 
 
 }
