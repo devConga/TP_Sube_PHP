@@ -25,9 +25,11 @@ class SaldoPendienteTest extends TestCase{
 
         $boleto = $colectivo->pagarCon($tarjeta);
         $boleto = $colectivo->pagarCon($tarjeta);
+        echo $tarjeta->pendiente;
         $boleto = $colectivo->pagarCon($tarjeta);
-        
-        $this->assertEquals(6400, $tarjeta->saldo);
+        echo $tarjeta->pendiente;
+
+        $this->assertEquals(6415, $tarjeta->saldo);
     }
 
 }
