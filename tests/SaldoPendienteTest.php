@@ -23,12 +23,9 @@ class SaldoPendienteTest extends TestCase{
         $tiempo = new Tiempo();
         $colectivo = new Colectivo("138", $tiempo);
 
-        echo $tarjeta->pendiente;
         $boleto = $colectivo->pagarCon($tarjeta);
         $boleto = $colectivo->pagarCon($tarjeta);
-        echo $tarjeta->pendiente;
         $boleto = $colectivo->pagarCon($tarjeta);
-        echo $tarjeta->pendiente;
 
         $this->assertEquals(6445, $tarjeta->saldo);
     }
