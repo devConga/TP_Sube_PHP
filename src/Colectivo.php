@@ -69,6 +69,7 @@ class Colectivo{
 
                 default:
                     $tarjeta->saldo = $tarjeta->saldo - $this->boletoNormal;
+                    $tarjeta->viajes +=1;
                     break;
             }
 
