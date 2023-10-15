@@ -24,7 +24,7 @@ class Colectivo{
 
         if($tarjeta->pendiente > 0){
             $this->hayPendiente = TRUE;
-            $this->AcreditarYCalcularPendiente();
+            $tarjeta->AcreditarYCalcularPendiente();
         }
 
         if(($tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento))) < $tarjeta->limiteInferior){
