@@ -23,7 +23,7 @@ class SaldoPendienteTest extends TestCase{
         $tiempo = new Tiempo();
         $colectivo = new Colectivo("138", $tiempo);
 
-        $boleto = $colectivo->pagarCon($tarjeta);
+        echo $tarjeta->pendiente;
         $boleto = $colectivo->pagarCon($tarjeta);
         $boleto = $colectivo->pagarCon($tarjeta);
         echo $tarjeta->pendiente;
