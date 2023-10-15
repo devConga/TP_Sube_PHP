@@ -7,7 +7,8 @@ use PHPUnit\Framework\TestCase;
 class ColectivoTest extends TestCase{
    
     public function testPagarCon(){
-    $colectivo = new Colectivo("Q", time(), date('d'));
+        $tiempoFalso = new TiempoFalso();
+    $colectivo = new Colectivo("Q", $tiempoFalso);
     $tarjeta = new Tarjeta();
     $tarjeta->saldo = -200;
     
