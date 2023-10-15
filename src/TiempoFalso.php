@@ -1,7 +1,7 @@
 <?php
 namespace TrabajoSube{
 
-class TiempoFalso{
+class TiempoFalso implements TiempoInterface{
     protected $dia;
     protected $segundos;
     protected $segundosEnUnDia;
