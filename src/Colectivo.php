@@ -7,7 +7,6 @@ class Colectivo{
     public $boletoNormal;
     public $linea;
     private $hayPendiente;
-    private $canceloPendiente;
     public $tiempo;
 
     function __construct($linea="Q", TiempoInterface $tiempo){
@@ -21,11 +20,6 @@ class Colectivo{
     }
 
     function pagarCon($tarjeta){
-
-        if($tarjeta->pendiente > 0){
-            $this->hayPendiente = TRUE;
-            $tarjeta->AcreditarPendiente();
-        }
 
         if(($tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento))) < $tarjeta->limiteInferior){
             echo 'Saldo insuficiente';
@@ -77,13 +71,14 @@ class Colectivo{
                     $tarjeta->saldo = $tarjeta->saldo - $this->boletoNormal;
                     break;
             }
-            
-            if(($tarjeta->pendiente > 0) != $this->hayPendiente){
-                $this->canceloPendiente = TRUE;
+
+            if($tarjeta->pendiente > 0){
+                $this->hayPendiente = TRUE;
+                $tarjeta->AcreditarPendiente;
             }
 
             $boleto = new Boleto(($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento)), $tarjeta->saldo, $tarjeta->idTarjeta, $tarjeta->tipoTarjeta, $this->linea, $this->canceloPendiente);
-            $this->canceloPendiente = FALSE;
+
             return $boleto;
         }
     }
