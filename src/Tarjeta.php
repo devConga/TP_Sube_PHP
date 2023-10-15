@@ -26,14 +26,17 @@ class Tarjeta{
         return bin2hex(random_bytes(($length-($length%2))/2));
     }
 
-    function AcreditarYCalcularPendiente(){
-        if($this->saldo < $this->limite){
-            $this->saldo = $this->saldo + $this->pendiente;
-            $this->pendiente = 0;
-        }
+    function CalcularPendiente(){
         if($this->saldo > $this->limite){
             $this->pendiente = $this->pendiente + ($this->saldo - $this->limite);
             $this->saldo = $this->limite;
+        }
+    }
+
+    function AcreditarPendiente(){
+        if($this->saldo < $this->limite){
+            $this->saldo = $this->saldo + $this->pendiente;
+            $this->CalcularPendiente();
         }
     }
 
@@ -42,17 +45,17 @@ class Tarjeta{
         if($monto >= 150){
             if($monto <= 500 && (($monto % 50) == 0)){
                 $this->saldo = $this->saldo + $monto;
-                $this->AcreditarYCalcularPendiente();
+                $this->CalcularPendiente();
                 return TRUE;
             }
             elseif($monto <= 1500 && (($monto % 100) == 0)){
                 $this->saldo = $this->saldo + $monto;
-                    $this->AcreditarYCalcularPendiente();
+                    $this->CalcularPendiente();
                     return TRUE;
                     }
             elseif($monto <= 4000 && (($monto % 500 == 0))){
                 $this->saldo = $this->saldo + $monto;
-                $this->AcreditarYCalcularPendiente();
+                $this->CalcularPendiente();
                 return TRUE;
             }
             else{
