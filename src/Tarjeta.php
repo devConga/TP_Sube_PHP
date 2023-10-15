@@ -18,6 +18,7 @@ class Tarjeta{
         $this->porcentajeDescuento = 0;
         $this->idTarjeta = $this->str_rand(16);
         $this->tipoTarjeta = "Normal";
+        $this->pendiente = 0;
     }
         
     function str_rand(int $length = 64){
