@@ -29,6 +29,7 @@ class Tarjeta{
     function CalcularPendiente(){
         if($this->saldo > $this->limite){
             $this->pendiente = $this->pendiente + ($this->saldo - $this->limite);
+            $this->saldo = $this->limite;
         }
 
     }
@@ -36,9 +37,6 @@ class Tarjeta{
     function AcreditarPendiente(){
         if($this->saldo < $this->limite){
             $this->saldo = $this->saldo + $this->pendiente;
-        }
-        if($this->saldo > $this->limite){
-            $this->saldo = $this->limite;
         }
         $this->CalcularPendiente();
     }
