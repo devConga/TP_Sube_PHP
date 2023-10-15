@@ -26,7 +26,7 @@ class TFranquiciaCompletaTest extends TestCase{
         $tarjeta->cargar(600);
 
         $boleto = $colectivo->pagarCon($tarjeta);
-        $tiempo->AvanzarSegundos(350);
+        $tiempoFalso->AvanzarSegundos(350);
         $boleto = $colectivo->pagarCon($tarjeta);
 
         $saldo = $tarjeta->saldo;
