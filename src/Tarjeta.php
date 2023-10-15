@@ -28,21 +28,18 @@ class Tarjeta{
 
     function CalcularPendiente(){
         if($this->saldo > $this->limite){
-            $this->pendiente = $this->saldo - $this->limite;
-        }
-    }
-
-    function SaldoAlLimite(){
-        if($this->saldo > $this->limite){
-            $this->saldo = $this->limite;
+            $this->pendiente = $this->pendiente + ($this->saldo - $this->limite);
         }
     }
 
     function AcreditarPendiente(){
         if($this->saldo < $this->limite){
             $this->saldo = $this->saldo + $this->pendiente;
-            $this->CalcularPendiente();
         }
+        if($this->saldo > $this->limite){
+            $this->saldo = $this->limite;
+        }
+        $this->CalcularPendiente();
     }
 
 
@@ -51,19 +48,16 @@ class Tarjeta{
             if($monto <= 500 && (($monto % 50) == 0)){
                 $this->saldo = $this->saldo + $monto;
                 $this->CalcularPendiente();
-                $this->SaldoAlLimite();
                 return TRUE;
             }
             elseif($monto <= 1500 && (($monto % 100) == 0)){
                 $this->saldo = $this->saldo + $monto;
                     $this->CalcularPendiente();
-                    $this->SaldoAlLimite();
                     return TRUE;
                     }
             elseif($monto <= 4000 && (($monto % 500 == 0))){
                 $this->saldo = $this->saldo + $monto;
                 $this->CalcularPendiente();
-                $this->SaldoAlLimite();
                 return TRUE;
             }
             else{
