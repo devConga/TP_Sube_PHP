@@ -21,8 +21,8 @@ class TFranquiciaCompletaTest extends TestCase{
 
     public function testTercerBoletoDia(){
         $tarjeta = new TFranquiciaCompleta();
-        $tiempo = new Tiempo();
-        $colectivo = new Colectivo("115", $tiempo);
+        $tiempoFalso = new TiempoFalso();
+        $colectivo = new Colectivo("115", $tiempoFalso);
         $tarjeta->cargar(600);
 
         $boleto = $colectivo->pagarCon($tarjeta);
