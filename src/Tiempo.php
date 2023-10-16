@@ -5,7 +5,7 @@ namespace TrabajoSube{
         public function time();
         public function day();
         public function dayOTW();
-        /* public function month(); */
+        public function month();
     }
     
     class Tiempo implements TiempoInterface{
@@ -24,8 +24,8 @@ namespace TrabajoSube{
             return intval(date('G'));
         }
 
-        /* public function month(){
+        public function month(){
             return date('M');
-        } */
+        }
     }
 }

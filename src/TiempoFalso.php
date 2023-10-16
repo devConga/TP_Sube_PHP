@@ -61,9 +61,9 @@ class TiempoFalso implements TiempoInterface{
         return $this->diaSemana;
     }
 
-    /* public function month(){
+    public function month(){
         return $this->mes;
-    } */
+    }
 
     function DiferenciaDeTiempo($_dia, $_segundos){
         if($this->dia == $_dia && $this->segundos > $_segundos){
