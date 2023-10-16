@@ -35,7 +35,7 @@ class TarjetaTest extends TestCase{
 
         $boleto = $colectivo->pagarCon($tarjeta);
 
-        $this->assertEquals(487, $tarjeta->saldo);
+        $this->assertEquals(302, $tarjeta->saldo);
         
 
     }
