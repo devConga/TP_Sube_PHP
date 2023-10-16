@@ -21,12 +21,12 @@ class TarjetaTest extends TestCase{
         $tarjeta = new Tarjeta();
         $colectivo = new Colectivo("102R", $tiempo);
 
-        $tarjeta->cargar(200);
+        $tarjeta->cargar(6600);
 
         for($i = 1; $i<=29; $i++){
             $boleto = $colectivo->pagarCon($tarjeta);
-            $this->assertEquals(15, $tarjeta->saldo);
-            $tarjeta->saldo += 185;
+            $this->assertEquals(6415, $tarjeta->saldo);
+            $tarjeta->cargar(200);
         }
 
 
