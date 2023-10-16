@@ -21,6 +21,8 @@ class TarjetaTest extends TestCase{
         $tarjeta = new Tarjeta();
         $colectivo = new Colectivo("102R", $tiempo);
 
+        $i = 0;
+
         $tarjeta->cargar(4000);
         $tarjeta->cargar(2000);
         $tarjeta->cargar(600);
@@ -35,7 +37,9 @@ class TarjetaTest extends TestCase{
             echo $tarjeta->saldo . " ";
         } */
 
-        for($i = 1; $i<=29; $i++){
+        //-----------------------------------------------------------------------------
+
+        /* for($i = 1; $i<=29; $i++){
             echo "Pago numero " . $i . " ";
             $boleto = $colectivo->pagarCon($tarjeta);
             $this->assertEquals(6415, $tarjeta->saldo);
@@ -47,6 +51,22 @@ class TarjetaTest extends TestCase{
             $boleto = $colectivo->pagarCon($tarjeta);
             $this->assertEquals(6452, $tarjeta->saldo);
             $tarjeta->saldo += 148;
+        } */
+
+        while($i < 80){
+            if(i<=29){
+                echo "Pago numero " . $i . " ";
+                $boleto = $colectivo->pagarCon($tarjeta);
+                $this->assertEquals(6415, $tarjeta->saldo);
+                $tarjeta->saldo += 185;
+            }
+            if($i<=79){
+                echo "Pago numero " . $i . " ";
+                $boleto = $colectivo->pagarCon($tarjeta);
+                $this->assertEquals(6452, $tarjeta->saldo);
+                $tarjeta->saldo += 148;
+            }
+            $i += 1;
         }
 
         $boleto = $colectivo->pagarCon($tarjeta);
