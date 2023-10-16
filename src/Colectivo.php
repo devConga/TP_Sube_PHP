@@ -30,10 +30,6 @@ class Colectivo{
 
     function pagarCon($tarjeta){
 
-        if($tarjeta->tipoTarjeta == "Normal" && ($tarjeta->GetViajesMes() != $this->tiempo->month())){
-            $tarjeta->ResetearViajes($this->tiempo->month());
-        }
-
         if($tarjeta->tipoTarjeta == "Normal"){
             $tarjeta->SetDescuentoUsoFrecuente();
         }
@@ -85,6 +81,9 @@ class Colectivo{
                     break;
 
                 default:
+                    if($tarjeta->GetViajesMes() != $this->tiempo->month()){
+                        $tarjeta->ResetearViajes($this->tiempo->month());
+                    }
                     $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento));
                     $tarjeta->AumentarViajes();
                     break;

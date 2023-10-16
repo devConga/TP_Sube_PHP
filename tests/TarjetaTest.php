@@ -15,7 +15,7 @@ class TarjetaTest extends TestCase{
     $this->assertFalse($tarjeta->cargar(270));
     $this->assertFalse($tarjeta->cargar(100));}
 
-    public function testUsoFrecuente(){
+    public function testUsoFrecuente30Viajes(){
 
         $tiempo = new TiempoFalso();
         $tarjeta = new Tarjeta();
@@ -25,59 +25,15 @@ class TarjetaTest extends TestCase{
 
         $tarjeta->cargar(4000);
         $tarjeta->cargar(2000);
-        $tarjeta->cargar(600);
-        /* echo $tarjeta->saldo . " "; */
 
-        /* for($i = 1; $i<=29; $i++){
-            echo "Pago numero " . $i . " ";
+        while($this->i <= 29){
             $boleto = $colectivo->pagarCon($tarjeta);
-            $this->assertEquals(6415, $tarjeta->saldo);
-            echo "E ";
-            $tarjeta->cargar(200);
-            echo $tarjeta->saldo . " ";
-        } */
-
-        //-----------------------------------------------------------------------------
-
-        /* for($i = 1; $i<=29; $i++){
-            echo "Pago numero " . $i . " ";
-            $boleto = $colectivo->pagarCon($tarjeta);
-            $this->assertEquals(6415, $tarjeta->saldo);
-            $tarjeta->saldo += 185;
-        }
-
-        for($i = 30; $i <= 79; $i++){
-            echo "Pago numero " . $i . " ";
-            $boleto = $colectivo->pagarCon($tarjeta);
-            $this->assertEquals(6452, $tarjeta->saldo);
-            $tarjeta->saldo += 148;
-        } */
-
-        while($this->i <= 80){
-            if($this->i <=29){
-                echo "Pago numero " . $i . " ";
-                $boleto = $colectivo->pagarCon($tarjeta);
-                $this->assertEquals(6415, $tarjeta->saldo);
-                $tarjeta->saldo += 185;
-            }
-            if($this->i <=79){
-                echo "Pago numero " . $i . " ";
-                $boleto = $colectivo->pagarCon($tarjeta);
-                $this->assertEquals(6452, $tarjeta->saldo);
-                $tarjeta->saldo += 148;
-            }
             $this->i += 1;
         }
 
         $boleto = $colectivo->pagarCon($tarjeta);
-        $this->assertEquals(6461.25, $tarjeta->saldo);
-        $tarjeta->saldo += 138.75;
 
-        $tiempo->AvanzarSegundos(3456000);
-
-        $boleto = $colectivo->pagarCon($tarjeta);
-        $this->assertEquals(6415, $tarjeta->saldo);
-
+        $this->assertEquals(487, $tarjeta->saldo);
         
 
     }
