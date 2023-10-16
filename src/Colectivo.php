@@ -9,7 +9,7 @@ class Colectivo{
     private $hayPendiente;
     public $tiempo;
 
-    function __construct($linea="Q", TiempoInterface $tiempo){
+    function __construct($linea, TiempoInterface $tiempo){
         $this->linea = $linea;
         $this->tiempo = $tiempo;
     }
