@@ -24,6 +24,7 @@ class TarjetaTest extends TestCase{
         $tarjeta->cargar(6600);
 
         for($i = 1; $i<=29; $i++){
+            echo "Pago numero " . $i;
             $boleto = $colectivo->pagarCon($tarjeta);
             $this->assertEquals(6415, $tarjeta->saldo);
             $tarjeta->cargar(200);
