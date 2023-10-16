@@ -20,7 +20,7 @@ class Colectivo{
 
     function checkFranjaHoraria(){
         if($this->tiempo->dayOTW() != "Sat" && $this->tiempo->dayOTW() != "Sun"){
-            if(6 < $this->tiempo->time24Hr() && $this->tiempo->time24Hr() < 22){
+            if($this->tiempo->time24Hr() > 6 && $this->tiempo->time24Hr() < 22){
                 return TRUE;
             }
             return FALSE;
