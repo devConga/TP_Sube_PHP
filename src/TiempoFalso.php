@@ -42,6 +42,10 @@ class TiempoFalso implements TiempoInterface{
         return $this->dia;
     }
 
+    public function dayOTW(){
+        return $this->diaSemana;
+    }
+
     function DiferenciaDeTiempo($_dia, $_segundos){
         if($this->dia == $_dia && $this->segundos > $_segundos){
             return $this->segundos - $_segundos;
