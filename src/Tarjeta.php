@@ -2,13 +2,13 @@
 namespace TrabajoSube;
 
 class Tarjeta{
-    protected $saldo;
+    public $saldo;
     public $limite;
     public $limiteInferior;
     public $porcentajeDescuento;
     public $idTarjeta;
     public $tipoTarjeta;
-    protected $pendiente;
+    public $pendiente;
     public $viajes = 0;
     public $viajesMes;
     
@@ -23,15 +23,7 @@ class Tarjeta{
         $this->pendiente = 0;
         $this->viajesMes = "Jan";
     }
-
-    function getSaldo(){
-        return $this->saldo;
-    }
-    
-    function getPendiente(){
-        return $this->pendiente;
-    }
-
+        
     function str_rand(int $length = 64){
         $length = ($length < 4) ? 4 : $length;
         return bin2hex(random_bytes(($length-($length%2))/2));

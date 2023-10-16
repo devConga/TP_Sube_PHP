@@ -9,7 +9,7 @@ class Colectivo{
     private $hayPendiente;
     public $tiempo;
 
-    function __construct($linea, TiempoInterface $tiempo){
+    function __construct($linea="Q", TiempoInterface $tiempo){
         $this->linea = $linea;
         $this->tiempo = $tiempo;
     }
@@ -34,7 +34,7 @@ class Colectivo{
             $tarjeta->SetDescuentoUsoFrecuente();
         }
 
-        if(($tarjeta->getSaldo() - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento))) < $tarjeta->limiteInferior){
+        if(($tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento))) < $tarjeta->limiteInferior){
             echo 'Saldo insuficiente';
             return FALSE;
         }
@@ -89,7 +89,7 @@ class Colectivo{
                     break;
             }
 
-            if($tarjeta->getPendiente() > 0){
+            if($tarjeta->pendiente > 0){
                 $this->hayPendiente = TRUE;
                 $tarjeta->AcreditarPendienteColectivo();
             }
