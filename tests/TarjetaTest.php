@@ -21,7 +21,9 @@ class TarjetaTest extends TestCase{
         $tarjeta = new Tarjeta();
         $colectivo = new Colectivo("102R", $tiempo);
 
-        $tarjeta->cargar(8000);
+        $tarjeta->cargar(4000);
+        $tarjeta->cargar(2000);
+        $tarjeta->cargar(600);
         echo $tarjeta->saldo;
 
         for($i = 1; $i<=29; $i++){
