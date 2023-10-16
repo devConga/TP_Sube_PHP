@@ -18,6 +18,16 @@ class Colectivo{
         return (100-$descuento)/100;
     }
 
+    function checkFranjaHoraria(){
+        if($this->tiempo->dayOTW() != "Sat" && $this->tiempo->dayOTW() != "Sun"){
+            if(6 < $this->tiempo->time24Hr() && $this->tiempo->time24Hr() < 22){
+                return TRUE;
+            }
+            return FALSE;
+        }
+        return FALSE;
+    }
+
     function pagarCon($tarjeta){
 
         if(($tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento))) < $tarjeta->limiteInferior){
@@ -36,7 +46,7 @@ class Colectivo{
                         return FALSE;
                     } 
                     else{
-                        if($tarjeta->viajesRealizados < 4){
+                        if($tarjeta->viajesRealizados < 4 && checkFranjaHoraria()){
                         $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento));
                         $tarjeta->ultimoViajeDia = $this->tiempo->day();
                         $tarjeta->ultimoViajeHora = $this->tiempo->time();
@@ -55,7 +65,7 @@ class Colectivo{
                     if($this->tiempo->day() != $tarjeta->ultimoViajeDia){
                         $tarjeta->viajesRealizados = 0;
                     }
-                    if($tarjeta->viajesRealizados < 2){
+                    if($tarjeta->viajesRealizados < 2 && checkFranjaHoraria()){
                         $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento));
                         $tarjeta->viajesRealizados+=1;
                         $tarjeta->ultimoViajeDia = $this->tiempo->day();

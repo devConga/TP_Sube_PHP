@@ -5,6 +5,7 @@ namespace TrabajoSube{
         public function time();
         public function day();
         public function dayOTW();
+        public function time24Hr();
     }
 class Tiempo implements TiempoInterface{
         public function time(){
@@ -17,6 +18,10 @@ class Tiempo implements TiempoInterface{
 
         public function dayOTW(){
             return date('D');
+        }
+
+        public function time24Hr(){
+            return intval(date('G'));
         }
     }
 }
