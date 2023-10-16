@@ -26,7 +26,7 @@ class TarjetaTest extends TestCase{
         $tarjeta->cargar(4000);
         $tarjeta->cargar(2000);
 
-        while($this->i < 31){
+        while($i < 31){
             $boleto = $colectivo->pagarCon($tarjeta);
             $this->i += 1;
         }
