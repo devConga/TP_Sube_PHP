@@ -8,6 +8,9 @@ class TiempoFalso implements TiempoInterface{
     protected $indexSemana;
     protected $diaSemana;
     protected $semana = array("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun");
+    protected $indexMes;
+    protected $mes;
+    protected $listaMes = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
 
     function __construct(){
         $this->dia = 1;
@@ -15,6 +18,8 @@ class TiempoFalso implements TiempoInterface{
         $this->diaSemana = $this->semana[$this->indexSemana];
         $this->segundos = 0;
         $this->segundosEnUnDia = 86400;
+        $this->indexMes = 0;
+        $this->mes = $this->listaMes[$this->indexMes];
     }
 
     private function ArreglarTiempo(){
@@ -24,16 +29,26 @@ class TiempoFalso implements TiempoInterface{
             if($this->indexSemana == 7){
                 $this->indexSemana = 0;
             }
+
+            if($this->dia == 31){
+                $this->dia = 1;
+                $this->indexMes += 1;
+                if($this->indexMes == 12){
+                    $this->indexMes = 0;
+                }
+            }
+
             $this->diaSemana = $this->semana[$this->indexSemana];
             $this->segundos -= $this->segundosEnUnDia;
         }
     }
-    
     function AvanzarSegundos($_segundos){
         $this->segundos += $_segundos;
         $this->ArreglarTiempo();
     }
-
+    public function time24Hr(){
+        return intdiv($this->segundos, 3600);
+    }
     public function time(){
         return $this->segundos;
     }
@@ -46,8 +61,8 @@ class TiempoFalso implements TiempoInterface{
         return $this->diaSemana;
     }
 
-    public function time24Hr(){
-        return intdiv($this->segundos, 3600);
+    public function month(){
+        return $this->mes;
     }
 
     function DiferenciaDeTiempo($_dia, $_segundos){
