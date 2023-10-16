@@ -46,7 +46,7 @@ class Colectivo{
                         return FALSE;
                     } 
                     else{
-                        if($tarjeta->viajesRealizados < 4 && checkFranjaHoraria()){
+                        if($tarjeta->viajesRealizados < 4 && $this->checkFranjaHoraria()){
                         $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento));
                         $tarjeta->ultimoViajeDia = $this->tiempo->day();
                         $tarjeta->ultimoViajeHora = $this->tiempo->time();
@@ -65,7 +65,7 @@ class Colectivo{
                     if($this->tiempo->day() != $tarjeta->ultimoViajeDia){
                         $tarjeta->viajesRealizados = 0;
                     }
-                    if($tarjeta->viajesRealizados < 2 && checkFranjaHoraria()){
+                    if($tarjeta->viajesRealizados < 2 && $this->checkFranjaHoraria()){
                         $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento));
                         $tarjeta->viajesRealizados+=1;
                         $tarjeta->ultimoViajeDia = $this->tiempo->day();
