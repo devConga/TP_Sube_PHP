@@ -4,13 +4,12 @@ include_once 'Boleto.php';
 
 class Colectivo{
 
-    public $boletoNormal;
+    public $boletoNormal = 185;
     public $linea;
     private $hayPendiente;
     public $tiempo;
 
     function __construct($linea="Q", TiempoInterface $tiempo){
-        $this->boletoNormal = 185;
         $this->linea = $linea;
         $this->tiempo = $tiempo;
     }
