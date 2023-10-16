@@ -15,6 +15,7 @@ class FranjaHorariaTest extends TestCase{
         $boleto = $colectivo->pagarCon($tarjeta);
 
         $this->assertEquals(415, $tarjeta->saldo);
+        $this->assertEquals(15000, $tiempoFalso->time());
     }
 
     public function testFranquiciaDia(){
