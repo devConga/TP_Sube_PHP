@@ -13,7 +13,8 @@ class TarjetaTest extends TestCase{
     $this->assertTrue($tarjeta->cargar(600));
     $this->assertTrue($tarjeta->cargar(2000));
     $this->assertFalse($tarjeta->cargar(270));
-    $this->assertFalse($tarjeta->cargar(100));}
+    $this->assertFalse($tarjeta->cargar(100));
+}
 
     public function testUsoFrecuente30Viajes(){
 
@@ -26,9 +27,9 @@ class TarjetaTest extends TestCase{
         $tarjeta->cargar(4000);
         $tarjeta->cargar(2000);
 
-        while($this->i < 31){
+        while($i < 31){
             $boleto = $colectivo->pagarCon($tarjeta);
-            $this->i += 1;
+            $i += 1;
         }
 
         $this->assertEquals(302, $tarjeta->saldo);
