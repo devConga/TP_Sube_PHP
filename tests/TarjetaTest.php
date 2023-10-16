@@ -53,20 +53,20 @@ class TarjetaTest extends TestCase{
             $tarjeta->saldo += 148;
         } */
 
-        while($i < 80){
-            if(i<=29){
+        while($this->i < 80){
+            if($this->ii<=29){
                 echo "Pago numero " . $i . " ";
                 $boleto = $colectivo->pagarCon($tarjeta);
                 $this->assertEquals(6415, $tarjeta->saldo);
                 $tarjeta->saldo += 185;
             }
-            if($i<=79){
+            if($this->i<=79){
                 echo "Pago numero " . $i . " ";
                 $boleto = $colectivo->pagarCon($tarjeta);
                 $this->assertEquals(6452, $tarjeta->saldo);
                 $tarjeta->saldo += 148;
             }
-            $i += 1;
+            $this->i += 1;
         }
 
         $boleto = $colectivo->pagarCon($tarjeta);
