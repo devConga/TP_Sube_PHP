@@ -21,7 +21,7 @@ class Colectivo{
 
     function pagarCon($tarjeta){
 
-        if($tarjeta->GetViajesMes() != $this->tiempo->month()){
+        if($tarjeta->tipoTarjeta == "Normal" && ($tarjeta->GetViajesMes() != $this->tiempo->month())){
             $tarjeta->ResetearViajes($this->tiempo->month());
         }
 

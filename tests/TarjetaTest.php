@@ -53,7 +53,7 @@ class TarjetaTest extends TestCase{
             $tarjeta->saldo += 148;
         } */
 
-        while($this->i < 80){
+        while($this->i <= 80){
             if($this->i <=30){
                 echo "Pago numero " . $this->i . " ";
                 $boleto = $colectivo->pagarCon($tarjeta);
