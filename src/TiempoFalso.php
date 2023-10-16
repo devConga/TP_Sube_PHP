@@ -5,9 +5,14 @@ class TiempoFalso implements TiempoInterface{
     protected $dia;
     protected $segundos;
     protected $segundosEnUnDia;
+    protected $indexSemana;
+    protected $diaSemana;
+    protected $semana = array("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun");
 
     function __construct(){
         $this->dia = 1;
+        $this->indexSemana = 1;
+        $this->diaSemana = $this->semana[$this->indexSemana];
         $this->segundos = 0;
         $this->segundosEnUnDia = 86400;
     }
@@ -15,6 +20,11 @@ class TiempoFalso implements TiempoInterface{
     private function ArreglarTiempo(){
         if($this->segundos >= $this->segundosEnUnDia){
             $this->dia +=1;
+            $this->indexSemana +=1;
+            if($this->indexSemana > 7){
+                $this->indexSemana = 0;
+            }
+            $this->diaSemana = $this->semana[$this->indexSemana];
             $this->segundos -= $this->segundosEnUnDia;
         }
     }
@@ -30,6 +40,10 @@ class TiempoFalso implements TiempoInterface{
 
     public function day(){
         return $this->dia;
+    }
+
+    public function dayOTW(){
+        return $this->diaSemana;
     }
 
     function DiferenciaDeTiempo($_dia, $_segundos){
