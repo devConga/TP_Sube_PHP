@@ -4,19 +4,28 @@ include_once 'Boleto.php';
 
 class Colectivo{
 
-    public $boletoNormal;
+    public $boletoNormal = 185;
     public $linea;
     private $hayPendiente;
     public $tiempo;
 
     function __construct($linea="Q", TiempoInterface $tiempo){
-        $this->boletoNormal = 185;
         $this->linea = $linea;
         $this->tiempo = $tiempo;
     }
 
     function descuento2multiplicador($descuento = 0){
         return (100-$descuento)/100;
+    }
+
+    function checkFranjaHoraria(){
+        if($this->tiempo->dayOTW() != "Sat" && $this->tiempo->dayOTW() != "Sun"){
+            if($this->tiempo->time24Hr() >= 6 && $this->tiempo->time24Hr() < 22){
+                return TRUE;
+            }
+            return FALSE;
+        }
+        return FALSE;
     }
 
     function pagarCon($tarjeta){
@@ -37,7 +46,7 @@ class Colectivo{
                         return FALSE;
                     } 
                     else{
-                        if($tarjeta->viajesRealizados < 4){
+                        if($tarjeta->viajesRealizados < 4 && $this->checkFranjaHoraria()){
                         $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento));
                         $tarjeta->ultimoViajeDia = $this->tiempo->day();
                         $tarjeta->ultimoViajeHora = $this->tiempo->time();
@@ -56,7 +65,7 @@ class Colectivo{
                     if($this->tiempo->day() != $tarjeta->ultimoViajeDia){
                         $tarjeta->viajesRealizados = 0;
                     }
-                    if($tarjeta->viajesRealizados < 2){
+                    if($tarjeta->viajesRealizados < 2 && $this->checkFranjaHoraria()){
                         $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento));
                         $tarjeta->viajesRealizados+=1;
                         $tarjeta->ultimoViajeDia = $this->tiempo->day();

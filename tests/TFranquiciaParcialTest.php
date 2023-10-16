@@ -11,6 +11,7 @@ class TFranquiciaParcialTest extends TestCase{
         $tarjeta = new TFranquiciaParcial();
         $tiempoFalso = new TiempoFalso();
         $colectivo = new Colectivo("Q", $tiempoFalso);
+        $tiempoFalso->AvanzarSegundos(21600);
         $boleto = $colectivo->pagarCon($tarjeta);
         
 
@@ -26,7 +27,7 @@ class TFranquiciaParcialTest extends TestCase{
         $colectivo = new Colectivo("115", $tiempoFalso);
 
         $tarjeta->cargar(600);
-        $tiempoFalso->AvanzarSegundos(15);
+        $tiempoFalso->AvanzarSegundos(21600);
         $boleto = $colectivo->pagarCon($tarjeta);
         $boleto = $colectivo->pagarCon($tarjeta);
 
@@ -38,6 +39,10 @@ class TFranquiciaParcialTest extends TestCase{
         $tiempoFalso = new TiempoFalso();
         $colectivo = new Colectivo("115", $tiempoFalso);
         $tarjeta->cargar(600);
+        $tiempoFalso->AvanzarSegundos(21600);
+
+        echo $colectivo->tiempo->dayOTW();
+        echo $colectivo->tiempo->time24Hr();
 
         $boleto = $colectivo->pagarCon($tarjeta);
         $tiempoFalso->AvanzarSegundos(350);

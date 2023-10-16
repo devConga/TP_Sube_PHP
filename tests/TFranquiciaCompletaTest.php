@@ -9,8 +9,9 @@ class TFranquiciaCompletaTest extends TestCase{
     public function testSiemprePuedePagar(){
     
         $tarjeta = new TFranquiciaCompleta();
-        $tiempo = new Tiempo();
+        $tiempo = new TiempoFalso();
         $colectivo = new Colectivo("Q", $tiempo);
+        $tiempo->AvanzarSegundos(21600);
         $boleto = $colectivo->pagarCon($tarjeta);
         
         $this->assertInstanceOf(Boleto::class, $boleto);
@@ -24,6 +25,7 @@ class TFranquiciaCompletaTest extends TestCase{
         $tiempoFalso = new TiempoFalso();
         $colectivo = new Colectivo("115", $tiempoFalso);
         $tarjeta->cargar(600);
+        $tiempoFalso->AvanzarSegundos(21600);
 
         $boleto = $colectivo->pagarCon($tarjeta);
         $tiempoFalso->AvanzarSegundos(350);

@@ -9,7 +9,7 @@ class Tarjeta{
     public $idTarjeta;
     public $tipoTarjeta;
     public $pendiente;
-    private $viajes;
+    public $viajes = 0;
     
     
     function __construct(){
