@@ -31,6 +31,8 @@ class TarjetaTest extends TestCase{
             $this->i += 1;
         }
 
+        echo $tarjeta->viajes;
+
         $boleto = $colectivo->pagarCon($tarjeta);
 
         $this->assertEquals(487, $tarjeta->saldo);
