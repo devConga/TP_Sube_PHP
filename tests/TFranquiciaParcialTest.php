@@ -41,6 +41,9 @@ class TFranquiciaParcialTest extends TestCase{
         $tarjeta->cargar(600);
         $tiempoFalso->AvanzarSegundos(21600);
 
+        echo $colectivo->tiempo->dayOTW();
+        echo $colectivo->tiempo->time24Hr();
+
         $boleto = $colectivo->pagarCon($tarjeta);
         $tiempoFalso->AvanzarSegundos(350);
         $boleto = $colectivo->pagarCon($tarjeta);
