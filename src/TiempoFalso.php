@@ -62,7 +62,7 @@ class TiempoFalso implements TiempoInterface{
     }
 
     public function month(){
-        return $this->$mes;
+        return $this->mes;
     }
 
     function DiferenciaDeTiempo($_dia, $_segundos){
