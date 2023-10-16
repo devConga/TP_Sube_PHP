@@ -10,8 +10,10 @@ class ColectivoTest extends TestCase{
     $tiempo = new Tiempo();
     $colectivo = new Colectivo("Q", $tiempo);
     $tarjeta = new Tarjeta();
-    $tarjeta->saldo = -200;
     
-    $this->assertFalse($colectivo->pagarCon($tarjeta));}
+    $boleto = $colectivo->pagarCon($tarjeta);
+    
+    $this->assertFalse($colectivo->pagarCon($tarjeta));
+}
 
 }

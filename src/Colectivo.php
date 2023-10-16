@@ -89,7 +89,7 @@ class Colectivo{
                     break;
             }
 
-            if($tarjeta->pendiente > 0){
+            if($tarjeta->getPendiente() > 0){
                 $this->hayPendiente = TRUE;
                 $tarjeta->AcreditarPendienteColectivo();
             }

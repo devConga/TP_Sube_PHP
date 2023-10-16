@@ -35,7 +35,7 @@ class TFranquiciaCompletaTest extends TestCase{
         
         $boleto = $colectivo->pagarCon($tarjeta);
 
-        $this->assertEquals($saldo - 185, $tarjeta->saldo);
+        $this->assertEquals($saldo - 185, $tarjeta->getSaldo());
 
     }
 

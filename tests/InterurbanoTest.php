@@ -15,6 +15,6 @@ class InterurbanoTest extends TestCase{
 
         $boleto = $colectivo->pagarCon($tarjeta);
 
-        $this->assertEquals(16, $tarjeta->saldo);
+        $this->assertEquals(16, $tarjeta->getSaldo());
     }
 }

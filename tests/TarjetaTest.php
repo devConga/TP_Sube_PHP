@@ -32,7 +32,7 @@ class TarjetaTest extends TestCase{
             $i += 1;
         }
 
-        $this->assertEquals(302, $tarjeta->saldo);
+        $this->assertEquals(302, $tarjeta->getSaldo());
 
     }
 
@@ -65,7 +65,7 @@ class TarjetaTest extends TestCase{
             $i += 1;
         }
 
-        $this->assertEquals(911.25, $tarjeta->saldo);
+        $this->assertEquals(911.25, $tarjeta->getSaldo());
 
     }
 

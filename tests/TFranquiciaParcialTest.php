@@ -52,11 +52,11 @@ class TFranquiciaParcialTest extends TestCase{
         $tiempoFalso->AvanzarSegundos(350);
         $boleto = $colectivo->pagarCon($tarjeta);
 
-        $saldo = $tarjeta->saldo;
+        $saldo = $tarjeta->getSaldo();
         
         $boleto = $colectivo->pagarCon($tarjeta);
 
-        $this->assertEquals($saldo - 185, $tarjeta->saldo);
+        $this->assertEquals($saldo - 185, $tarjeta->getSaldo());
 
     }
 
