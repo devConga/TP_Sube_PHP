@@ -11,8 +11,8 @@ class SaldoPendienteTest extends TestCase{
         $tarjeta->cargar(3500);
         $tarjeta->cargar(3500);
 
-        $this->assertEquals(6600, $tarjeta->getSaldo());
-        $this->assertEquals(400, $tarjeta->getPendiente());
+        $this->assertEquals(6600, $tarjeta->saldo);
+        $this->assertEquals(400, $tarjeta->pendiente);
     }
 
     public function testRecargaPendiente(){
@@ -27,7 +27,7 @@ class SaldoPendienteTest extends TestCase{
         $boleto = $colectivo->pagarCon($tarjeta);
         $boleto = $colectivo->pagarCon($tarjeta);
 
-        $this->assertEquals(6445, $tarjeta->getSaldo());
+        $this->assertEquals(6445, $tarjeta->saldo);
     }
 
 }
