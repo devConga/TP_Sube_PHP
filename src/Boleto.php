@@ -10,7 +10,7 @@ class Boleto{
     public $tipoTarjeta;
     private $linea;
 
-    function __construct($costoBoleto, $saldoRestante, $idTarjeta=0, $tipoTarjeta, $linea){
+    function __construct($costoBoleto, $saldoRestante, $idTarjeta, $tipoTarjeta, $linea){
         $this->hora = date('h:i:s');
         $this->fecha = date('d-m');
         $this->costoBoleto = $costoBoleto;
