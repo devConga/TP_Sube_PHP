@@ -34,7 +34,7 @@ class Colectivo{
             $tarjeta->SetDescuentoUsoFrecuente();
         }
 
-        if(($tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento))) < $tarjeta->limiteInferior){
+        if(($tarjeta->getSaldo() - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento))) < $tarjeta->limiteInferior){
             echo 'Saldo insuficiente';
             return FALSE;
         }
