@@ -26,11 +26,12 @@ class TarjetaTest extends TestCase{
         $tarjeta->cargar(600);
 
         for($i = 1; $i<=29; $i++){
-            echo "Pago numero " . $i;
+            echo "Pago numero " . $i . " ";
             $boleto = $colectivo->pagarCon($tarjeta);
             $this->assertEquals(6415, $tarjeta->saldo);
+            echo "E ";
             $tarjeta->cargar(200);
-            echo $tarjeta->saldo;
+            echo $tarjeta->saldo . " ";
         }
 
 
