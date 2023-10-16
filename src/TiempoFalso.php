@@ -11,7 +11,7 @@ class TiempoFalso implements TiempoInterface{
 
     function __construct(){
         $this->dia = 1;
-        $this->indexSemana = 1;
+        $this->indexSemana = 0;
         $this->diaSemana = $this->semana[$this->indexSemana];
         $this->segundos = 0;
         $this->segundosEnUnDia = 86400;
@@ -21,7 +21,7 @@ class TiempoFalso implements TiempoInterface{
         if($this->segundos >= $this->segundosEnUnDia){
             $this->dia +=1;
             $this->indexSemana +=1;
-            if($this->indexSemana > 7){
+            if($this->indexSemana == 7){
                 $this->indexSemana = 0;
             }
             $this->diaSemana = $this->semana[$this->indexSemana];
@@ -44,6 +44,10 @@ class TiempoFalso implements TiempoInterface{
 
     public function dayOTW(){
         return $this->diaSemana;
+    }
+
+    public function time24Hr(){
+        return intdiv($this->segundos, 3600);
     }
 
     function DiferenciaDeTiempo($_dia, $_segundos){
