@@ -11,7 +11,7 @@ class TFranquiciaParcialTest extends TestCase{
         $tarjeta = new TFranquiciaParcial();
         $tiempoFalso = new TiempoFalso();
         $colectivo = new Colectivo("Q", $tiempoFalso);
-        $tiempo->AvanzarSegundos(21600);
+        $tiempoFalso->AvanzarSegundos(21600);
         $boleto = $colectivo->pagarCon($tarjeta);
         
 
