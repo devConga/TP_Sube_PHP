@@ -21,6 +21,14 @@ class Colectivo{
 
     function pagarCon($tarjeta){
 
+        if($tarjeta->GetViajesMes() != $tiempo->month()){
+            $tarjeta->ResetearViajes($tiempo->month());
+        }
+
+        if($tarjeta->tipoTarjeta == "Normal"){
+            $tarjeta->SetDescuentoUsoFrecuente();
+        }
+
         if(($tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento))) < $tarjeta->limiteInferior){
             echo 'Saldo insuficiente';
             return FALSE;
@@ -68,8 +76,8 @@ class Colectivo{
                     break;
 
                 default:
-                    $tarjeta->saldo = $tarjeta->saldo - $this->boletoNormal;
-                    $tarjeta->viajes +=1;
+                    $tarjeta->saldo = $tarjeta->saldo - ($this->boletoNormal * $this->descuento2multiplicador($tarjeta->porcentajeDescuento));
+                    $tarjeta->AumentarViajes();
                     break;
             }
 

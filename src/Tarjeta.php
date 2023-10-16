@@ -9,7 +9,8 @@ class Tarjeta{
     public $idTarjeta;
     public $tipoTarjeta;
     public $pendiente;
-    public $viajes;
+    public $viajes = 0;
+    public $viajesMes;
     
     
     function __construct(){
@@ -20,6 +21,7 @@ class Tarjeta{
         $this->idTarjeta = $this->str_rand(16);
         $this->tipoTarjeta = "Normal";
         $this->pendiente = 0;
+        $this->viajesMes = "Jan";
     }
         
     function str_rand(int $length = 64){
@@ -32,6 +34,34 @@ class Tarjeta{
             $this->pendiente = $this->pendiente + ($this->saldo - $this->limite);
             $this->SaldoAlMax();
         }
+    }
+
+    function SetDescuentoUsoFrecuente(){
+        if($this->viajes <= 29){
+            $this->porcentajeDescuento = 0;
+            return;
+        }
+        if($this->viajes <= 79){
+            $this->porcentajeDescuento = 20;
+            return;
+        }
+        if($this->viajes >= 80){
+            $this->porcentajeDescuento = 25;
+            return;
+        }
+    }
+
+    function AumentarViajes(){
+        $this->viajes += 1;
+    }
+
+    function ResetearViajes($_mes){
+        $this->viajes = 0;
+        $this->viajesMes = $_mes;
+    }
+    
+    function GetViajesMes(){
+        return $this->viajesMes;
     }
 
     function SaldoAlMax(){
