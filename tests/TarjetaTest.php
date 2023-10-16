@@ -15,4 +15,22 @@ class TarjetaTest extends TestCase{
     $this->assertFalse($tarjeta->cargar(270));
     $this->assertFalse($tarjeta->cargar(100));}
 
+    public function testUsoFrecuente(){
+
+        $tiempo = new TiempoFalso();
+        $tarjeta = new Tarjeta();
+        $colectivo = new Colectivo("102R", $tiempo);
+
+        $tarjeta->cargar(200);
+
+        for($i = 1; $i<=29; $i++){
+            $boleto = $colectivo->pagarCon($tarjeta);
+            $this->assertEquals(15, $tarjeta->saldo);
+            $tarjeta->saldo += 185;
+        }
+
+
+
+    }
+
 }
