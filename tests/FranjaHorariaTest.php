@@ -12,6 +12,7 @@ class FranjaHorariaTest extends TestCase{
         $colectivo = new Colectivo("115", $tiempoFalso);
         $tarjeta->cargar(600);
         $tiempoFalso->AvanzarSegundos(15000);
+        $boleto = $colectivo->pagarCon($tarjeta);
 
         $this->assertEquals(415, $tarjeta->saldo);
     }
