@@ -34,7 +34,7 @@ class TiempoTest extends TestCase{
 
         $tiempoFalso->AvanzarSegundos(86450);
 
-        assertEquals($tiempoFalso->day(), 1);
+        $this->assertEquals($tiempoFalso->day(), 1);
 
     }
 }
