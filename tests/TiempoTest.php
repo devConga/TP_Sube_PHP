@@ -26,6 +26,6 @@ class TiempoTest extends TestCase{
 
     public function testTime(){
         $tiempo = new Tiempo();
-        $this->assertEquals(time(), $tiempo->day());
+        $this->assertEquals(time(), $tiempo->time());
     }
 }
