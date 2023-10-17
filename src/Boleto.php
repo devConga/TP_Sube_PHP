@@ -24,8 +24,8 @@ class Boleto{
 
 
     function getBoleto(){
-        echo $result;
-        return $result;
+        echo $this->result;
+        return $this->result;
     }
     
 }
