@@ -65,7 +65,7 @@ class TiempoFalso implements TiempoInterface{
         return $this->mes;
     }
 
-    function DiferenciaDeTiempo($_dia, $_segundos){
+    /*function DiferenciaDeTiempo($_dia, $_segundos){
         if($this->dia == $_dia && $this->segundos > $_segundos){
             return $this->segundos - $_segundos;
         }
@@ -81,7 +81,7 @@ class TiempoFalso implements TiempoInterface{
             return FALSE;
         }
         return TRUE;
-    }
+    }*/
 
 }
 }

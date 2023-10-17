@@ -8,7 +8,8 @@ class Boleto{
     public $saldoRestante;
     public $idTarjeta;
     public $tipoTarjeta;
-    private $linea;
+    public $linea;
+    public $result;
 
     function __construct($costoBoleto, $saldoRestante, $idTarjeta, $tipoTarjeta, $linea){
         $this->hora = date('h:i:s');
@@ -18,31 +19,13 @@ class Boleto{
         $this->idTarjeta = $idTarjeta;
         $this->tipoTarjeta = $tipoTarjeta;
         $this->linea = $linea;
+        $this->result = "ABONA: " . $costoBoleto . "\nSALDO: " . $saldoRestante . "\nLINEA: " . $linea . "\nID: " . $idTarjeta;
     }
 
-    function getFecha(){
-        return $this->fecha;
-    }
 
-    function getHora(){
-        return $this->hora;
+    function getBoleto(){
+        echo $this->result;
+        return $this->result;
     }
-
-    function getCosto(){
-        return $this->costoBoleto;
-    }
-
-    function getSaldo(){
-        return $this->saldoRestante;
-    }
-
-    function getTipoTarjeta(){
-        return $this->tipoTarjeta;
-    }
-
-    function getLinea(){
-        return $this->linea;
-    }
-
     
 }
