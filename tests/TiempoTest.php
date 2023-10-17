@@ -28,4 +28,13 @@ class TiempoTest extends TestCase{
         $tiempo = new Tiempo();
         $this->assertEquals(time(), $tiempo->time());
     }
+
+    public function testArreglarTiempo(){
+        $tiempoFalso = new TiempoFalso();
+
+        $tiempoFalso->AvanzarSegundos(86450);
+
+        assertEquals($tiempoFalso->day(), 1);
+
+    }
 }
