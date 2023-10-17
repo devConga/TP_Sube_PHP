@@ -40,9 +40,9 @@ class BoletoTest extends TestCase{
     public function testGetBoleto(){
     $boleto = new Boleto(185, 200 , "8a9a2e84e5f0919e" , "Normal", "K");
     $this->assertEquals($boleto->getBoleto(), "ABONA: 185
-    SALDO: 200
-    LINEA: K
-    ID: 8a9a2e84e5f0919e");
+SALDO: 200
+LINEA: K
+ID: 8a9a2e84e5f0919e");
     }
 
 }
